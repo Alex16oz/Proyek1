@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Proyek1</string>
+    <string name="app_name">SmartGear</string>
     <string name="title_activity_user_profile">UserProfileActivity</string>
     <string name="title_activity_user_management">UserManagementActivity</string>
     <string name="title_activity_attendance">AttendanceActivity</string>
