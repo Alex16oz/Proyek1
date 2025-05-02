@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Proyek1</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_activity_user_management">UserManagementActivity</string>
+    <string name="title_activity_attendance">AttendanceActivity</string>
+    <string name="title_activity_warehouse">WarehouseActivity</string>
+    <string name="title_activity_schedule">ScheduleActivity</string>
+    <string name="title_activity_spare_parts">SparePartsActivity</string>
+    <string name="title_activity_repair_reports">RepairReportsActivity</string>
+    <string name="title_activity_damage_reports">DamageReportsActivity</string>
+    <string name="title_activity_attendance_reports">AttendanceReportsActivity</string>
+    <string name="title_activity_base">BaseActivity</string>
+</resources>
