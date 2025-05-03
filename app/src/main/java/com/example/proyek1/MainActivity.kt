@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -144,7 +145,7 @@ fun MainScreen() {
                     startDestination = Screen.Dashboard.route,
                     modifier = Modifier.padding(innerPadding)
                 ) {
-                    composable(Screen.Dashboard.route) { Greeting("Dashboard") }
+                    composable(Screen.Dashboard.route) { DashboardScreen() }
                     composable(Screen.UserProfile.route) { UserProfileScreen() }
                     composable(Screen.UserManagement.route) { Greeting("User Management") }
                     composable(Screen.Attendance.route) { Greeting("Attendance") }
@@ -160,6 +161,58 @@ fun MainScreen() {
             }
         }
     )
+}
+
+@Composable
+fun DashboardScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        // Overview Tiles
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState())
+                .padding(bottom = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            OverviewTile(title = "Users", count = 150, iconId = R.drawable.person_24px)
+            OverviewTile(title = "Schedules", count = 35, iconId = R.drawable.event_24px)
+            OverviewTile(title = "Spare Parts", count = 280, iconId = R.drawable.shelves_24px)
+            // Add more overview tiles as needed
+        }
+
+        // Rest of the Dashboard Content
+        Greeting("Dashboard", modifier = Modifier.weight(1f)) // Example content
+    }
+}
+
+@Composable
+fun OverviewTile(title: String, count: Int, iconId: Int) {
+    Card(
+        modifier = Modifier
+            .width(160.dp)
+            .wrapContentHeight(),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        shape = RoundedCornerShape(8.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                painterResource(id = iconId),
+                contentDescription = title,
+                modifier = Modifier.size(40.dp),
+                tint = MaterialTheme.colorScheme.primary
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(title, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("$count Items", fontSize = 14.sp, color = Color.Gray)
+        }
+    }
 }
 
 @Composable
@@ -213,7 +266,7 @@ fun UserProfileScreen() {
                         Spacer(modifier = Modifier.height(8.dp))
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text("Password:", fontSize = 18.sp, modifier = Modifier.width(100.dp))
-                            Text("********", fontSize = 18.sp)
+                            Text("abcdef", fontSize = 18.sp)
                         }
                         Spacer(modifier = Modifier.height(8.dp))
                         HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
